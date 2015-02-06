@@ -6,8 +6,6 @@ To get started, check out the repository, inspect the code,
 
 ### Getting started
 
-####Part 1: Optimize PageSpeed Insights score for index.html
-
 Some useful tips to help you get started:
 
 1. Check out the repository
@@ -29,12 +27,6 @@ Some useful tips to help you get started:
 1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
 
 Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
-
-####Part 2: Optimize Frames per Second in pizza.html
-
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
-
-You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
 
 ### Optimization Tips and Tricks
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
@@ -75,31 +67,44 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 
 My optimizations and sources
 ============================
--Index.html -> target -> 90 PSI score 
-  -Compressed all images that could be compressed with Pixelmator
+##Index.html -> target -> 90 PSI score 
+
+Compressed all images that could be compressed with Pixelmator
+
   	-https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization
     -Created a thumbnail for the pizzaria image
-  -Added my google analytic credentials to index.html and other pages
+
+Added my google analytic credentials to index.html and other pages
+
   -Inlined the font of index.html and related pages
   	-https://developers.google.com/speed/pagespeed/module/filter-css-inline-google-fonts
     -Required in config file for nginx if you want to run on permanent server: pagespeed EnableFilters inline_google_font_css;
-  -Minified CSS
+
+Minified CSS
+
     -http://cssminifier.com/
-  -Inlined the style.css of index.html and related pages
+
+Inlined the style.css of index.html and related pages
+
     -https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery#example
-  -My configuration for a PSI score over 90
+
+My configuration for a PSI score over 90
+
     -bash to file directory
     -"python -m SimpleHTTPServer 8080"
     -put ngrok in file directory
     -"./ngrok 8080"
     -put ngrok url into https://developers.google.com/speed/pagespeed/insights/
     -note: I removed ngrok from file directory before pushing to github
-  -My scores:
+
+My scores:
+
     -Mobile: 94
     -Desktop: 91
   
 
--Pizza FPS -> target -> 16 ms on mobile
+##Pizza FPS -> target -> 16 ms on mobile
+
   -Reduced the amount of background pizzas down from 200, which is way too many 
     -My main strategy is to lower the amount of times the for loops are ran and reduce the content of the loops
     -http://www.w3schools.com/js/js_performance.asp
@@ -110,7 +115,7 @@ My optimizations and sources
     -now <1 ms on desktop (2013 rMBP)
     -4-7 ms on mobile (Nexus 7)
 
-Pizza Resize -> target -> 5 ms on mobile 
+##Pizza Resize -> target -> 5 ms on mobile 
   -Integrated changeSliderLabel into sizeSwitcher because it was redudant
   -Moved the variable dx out of the changePizzaSizes for loop because it only needs to be computed once
   -Added an option for Extra Large because Extra Large is the best
